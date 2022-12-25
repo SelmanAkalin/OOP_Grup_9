@@ -8,7 +8,6 @@
 //! class PointCloud
 class PointCloud {
 private:
-	friend PointCloud& operator+(const PointCloud&, const PointCloud&);
 	Point* points;
 	int pointNumber;
 public:
