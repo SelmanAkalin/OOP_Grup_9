@@ -24,12 +24,18 @@
     <ClCompile Include="Point_PointCloud_TEST.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Point.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="PointCloud.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Transform.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

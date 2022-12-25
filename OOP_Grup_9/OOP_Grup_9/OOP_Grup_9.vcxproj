@@ -123,11 +123,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\Transform.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="PointCloud.cpp" />
     <ClCompile Include="Point_PointCloud_TEST.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\Transform.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="PointCloud.h" />
   </ItemGroup>
