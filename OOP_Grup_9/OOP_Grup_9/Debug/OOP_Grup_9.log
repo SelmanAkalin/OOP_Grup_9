@@ -1,6 +1,5 @@
-﻿  Point.cpp
-  PointCloud.cpp
-  Point_PointCloud_TEST.cpp
-  Kod Üretiliyor...
-c:\users\calik\desktop\yeni klasör (4)\oop_grup_9\oop_grup_9\oop_grup_9\pointcloud.cpp(77): warning C4172: yerel değişkenin veya geçici : NP öğesinin adresi döndürülüyor
-  OOP_Grup_9.vcxproj -> C:\Users\calik\Desktop\Yeni klasör (4)\OOP_Grup_9\OOP_Grup_9\Debug\OOP_Grup_9.exe
+﻿  PointCloudRecorder.cpp
+c:\users\dell\downloads\pointcloudrecorder.h(7): fatal error C1083: Cannot open include file: 'PointCloud.h': No such file or directory
+  Transform.cpp
+c1xx : fatal error C1083: Cannot open source file: '..\..\..\..\Transform.cpp': No such file or directory
+  Generating Code...
