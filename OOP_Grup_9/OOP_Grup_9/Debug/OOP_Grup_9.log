@@ -1,6 +1,6 @@
 ﻿  Point.cpp
   PointCloud.cpp
   Point_PointCloud_TEST.cpp
-  Generating Code...
-c:\users\toshba\desktop\son branch\oop_grup_9\oop_grup_9\oop_grup_9\pointcloud.cpp(77): warning C4172: returning address of local variable or temporary: NP
-  OOP_Grup_9.vcxproj -> C:\Users\toshba\Desktop\SON BRANCH\OOP_Grup_9\OOP_Grup_9\Debug\OOP_Grup_9.exe
+  Kod Üretiliyor...
+c:\users\calik\desktop\yeni klasör (4)\oop_grup_9\oop_grup_9\oop_grup_9\pointcloud.cpp(77): warning C4172: yerel değişkenin veya geçici : NP öğesinin adresi döndürülüyor
+  OOP_Grup_9.vcxproj -> C:\Users\calik\Desktop\Yeni klasör (4)\OOP_Grup_9\OOP_Grup_9\Debug\OOP_Grup_9.exe
