@@ -8,8 +8,7 @@
 * @brief	: Constructor without parameter.
 */
 PointCloud::PointCloud() {
-	pointNumber = 1;
-	points = new Point[pointNumber];
+	pointNumber = 0;
 }
 /**
 * @brief	: Constructor with a parameter.
@@ -17,7 +16,6 @@ PointCloud::PointCloud() {
 */
 PointCloud::PointCloud(int _PN) {
 	pointNumber = _PN;
-	points = new Point[pointNumber];
 }
 /**
 * @brief	: Copy Constructor with a parameter.
@@ -26,29 +24,26 @@ PointCloud::PointCloud(int _PN) {
 PointCloud::PointCloud(const PointCloud& PC) {
 	pointNumber = PC.getpointNumber();
 
-	points = new Point[pointNumber];
-
-	for (int i = 0; i < PC.pointNumber; i++) {
-		points[i] = PC.points[i];
-	}
+	points = PC.points;
+	
 }
 /**
 * @brief	: Destructor for deleting list of points.
 */
 PointCloud::~PointCloud(){
-	delete[]points;
+	points.clear();
 }
 /**
 * @brief	: setPoints function for setting points.
 * @param	: P is a parameter for setting points.
 */
-void PointCloud::setPoints(Point* P) {
+void PointCloud::setPoints(list<Point> P) {
 	points = P;
 }
 /**
 * @brief	: getPoints function for returning points.
 */
-Point* PointCloud::getPoints() {
+list<Point> PointCloud::getPoints() const {
 	return points;
 }
 /**
@@ -62,19 +57,20 @@ int PointCloud::getpointNumber() const {
 * @param	: _PC is a parameter for getting a PointCloud.
 */
 PointCloud& PointCloud::operator+(const PointCloud& P) {
-	
-	PointCloud NP(pointNumber + P.pointNumber);
 
-	for (int i = 0; i < pointNumber; i++) {
-		NP.points[i] = points[i];
-	}
+	PointCloud sum(pointNumber + P.getpointNumber());
+	list<Point>::iterator it1;
 
-	for (int i = pointNumber, j = 0; i < NP.getpointNumber(); i++, j++) {
-		NP.points[i] = P.points[j];
-		cout << " ";
-	}
+	sum.points = P.getPoints();
 
-	return NP;
+	list<Point> list2 = sum.getPoints();
+
+	for (it1 = points.begin(); it1 != points.end(); it1++)
+		list2.push_back(*it1);
+
+	sum.setPoints(list2);
+
+	return sum;
 }
 /**
 * @brief	: This function is setting a PointCloud with anothers attributes.
@@ -82,15 +78,7 @@ PointCloud& PointCloud::operator+(const PointCloud& P) {
 */
 PointCloud& PointCloud::operator=(const PointCloud& PC) {
 
-	delete[]points;
-
-	pointNumber = PC.getpointNumber();
-
-	points = new Point[pointNumber];
-
-	for (int i = 0; i < pointNumber; i++) {
-		points[i] = PC.points[i];
-	}
-
+	points = PC.points;
+	pointNumber = PC.pointNumber;
 	return (*this);
 }

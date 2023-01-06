@@ -137,6 +137,7 @@
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="PointCloud.cpp" />
     <ClCompile Include="PointCloudRecorder.cpp" />
+    <ClCompile Include="Point_PointCloud_TEST.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -56,5 +56,8 @@
     <ClCompile Include="3DGridMap_TEST.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="Point_PointCloud_TEST.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

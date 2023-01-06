@@ -8,6 +8,8 @@
 #include<iostream>
 #include<string>
 #include<list>
+#include<vector>
+//#include <Eigen/Dense>
 
 using namespace std;
 //! class Point

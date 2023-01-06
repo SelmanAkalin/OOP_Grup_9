@@ -8,15 +8,15 @@
 //! class PointCloud
 class PointCloud {
 private:
-	Point* points;
+	list<Point> points;
 	int pointNumber;
 public:
 	PointCloud();
 	PointCloud(int);
 	PointCloud(const PointCloud&);
 	~PointCloud();
-	void setPoints(Point*);
-	Point* getPoints();
+	void setPoints(std::list<Point>);
+	std::list<Point> getPoints()const;
 	int getpointNumber()const;
 	PointCloud& operator+(const PointCloud&);
 	PointCloud& operator=(const PointCloud&);
