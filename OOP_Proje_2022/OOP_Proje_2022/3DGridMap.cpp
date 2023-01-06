@@ -55,9 +55,10 @@ int GridMap::getdepth()const {
 * @param	: _PC is a parameter for putting into map.
 */
 void GridMap::insertPointCloud(PointCloud& _PC) {
-	Point* tut = _PC.getPoints();
+	list<Point> tut = _PC.getPoints();
 	for (int i = 0; i < _PC.getpointNumber(); i++) {
-		insertPoint(tut[i]);
+		insertPoint(tut.back());
+		tut.pop_back();
 	}
 }
 /**
