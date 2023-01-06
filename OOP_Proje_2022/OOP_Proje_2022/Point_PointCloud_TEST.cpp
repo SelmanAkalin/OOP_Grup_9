@@ -71,38 +71,41 @@ void PointCloud_TEST() {
 	P6.setZ(6.3333);
 
 	PointCloud PC1(3), PC2(3);
-	Point *pP1, *pP2;
+	list<Point> pP1, pP2;
 
 	pP1 = PC1.getPoints();
 	pP2 = PC2.getPoints();
 
-	pP1[0] = P1;
-	pP1[1] = P2;
-	pP1[2] = P3;
-	pP2[0] = P4;
-	pP2[1] = P5;
-	pP2[2] = P6;
+	pP1.push_back(P1);
+	pP1.push_back(P2);
+	pP1.push_back(P3);
+	pP2.push_back(P4);
+	pP2.push_back(P5);
+	pP2.push_back(P6);
 
-	for (int i = 0; i < 3; i++) {
-		cout << "PC1 " << i << ". nokta X: " << pP1[i].getX() << " Y: " << pP1[i].getY() << " Z: " << pP1[i].getZ() << endl;
-		cout << "PC2 " << i << ". nokta X: " << pP2[i].getX() << " Y: " << pP2[i].getY() << " Z: " << pP2[i].getZ() << endl;
-	}
+	list<Point>::iterator it1, it2;
+	int i;
+	for (i = 0, it1 = pP1.begin(); it1 != pP1.end(); it1++, i++)
+		cout << "PC1 " << i << ". nokta X: " << (*it1).getX() << " Y: " << (*it1).getY() << " Z: " << (*it1).getZ() << endl;
+
+	for (i = 0, it2 = pP2.begin(); it2 != pP2.end(); it2++, i++)
+		cout << "PC2 " << i << ". nokta X: " << (*it2).getX() << " Y: " << (*it2).getY() << " Z: " << (*it2).getZ() << endl;
 
 	cout << "PC1 pointNumber: " << PC1.getpointNumber() << endl << "PC2 pointNumber: " << PC2.getpointNumber() << endl;
 
 	PC1.setPoints(pP1);
 	PC2.setPoints(pP2);
 
-	PointCloud PC3(PC1.getpointNumber() + PC2.getpointNumber());
+	PointCloud PC3(PC1.getpointNumber());
+
+	list<Point>::iterator it3;
 
 	PC3 = PC1;
 
-	Point *pP3 = PC3.getPoints();
+	list<Point>pP3 = PC3.getPoints();
 
-	for (int i = 0; i < PC3.getpointNumber(); i++) {
-		cout << "PC3 " << i << ". nokta X: " << (*pP3).getX() << " Y: " << (*pP3).getY() << " Z: " << (*pP3).getZ() << endl;
-		pP3++;
-	}
+	for (i = 0, it3 = pP3.begin(); it3 != pP3.end(); it3++, i++)
+		cout << "PC3 " << i << ". nokta X: " << (*it3).getX() << " Y: " << (*it3).getY() << " Z: " << (*it3).getZ() << endl;
 
 }
 
