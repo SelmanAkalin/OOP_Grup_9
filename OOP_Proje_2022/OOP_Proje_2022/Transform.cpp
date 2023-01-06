@@ -8,31 +8,23 @@
 * @brief	: Constructor without parameters.
 */
 Transform::Transform() {
-	for (int i = 0; i < 3; i++) {
-		angles[i] = 0;
-		trans[i] = 0;
-		for (int j = 0; j < 3; j++) {
-			rotation[i][j] = 0;
-		}
-	}
+
 }
 /**
 * @brief	: Constructor with parameters.
 * @param	: _r is a parameter for setting classes rotation matrix and _t is setting classes trans matrix.
 */
-Transform::Transform(double* _r, double* _t) {
-	for (int i = 0; i < 3; i++) {
-		trans[i] = _t[i];
-	}
+Transform::Transform(Eigen::Matrix3d _r, Eigen::Vector3d _t) {
 
-	for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 3; j++) {
-			rotation[i][j] = (*_r);
-			_r++;
-		}
-	}
+	trans = _t;
+
+
+	rotation = _r;
+
+
 	setTransMatrixWithRotation();
 }
+
 /**
 * @brief	: This function setting transMatrix with rotation matrix.
 */
@@ -59,28 +51,44 @@ void Transform::setTransMatrixWithRotation() {
 */
 void Transform::setTransMatrix()	 
 {									
-	transMatrix[0][0] = cos(angles[2])*cos(angles[1]);
-	transMatrix[0][1] = cos(angles[2])*sin(angles[1])*sin(angles[0]) - sin(angles[2])*cos(angles[0]);
-	transMatrix[0][2] = cos(angles[2])*sin(angles[1])*cos(angles[0]) + sin(angles[2])*sin(angles[0]);
-	transMatrix[1][0] = sin(angles[2])*cos(angles[1]);
-	transMatrix[1][1] = sin(angles[2])*sin(angles[1])*sin(angles[0]) + cos(angles[2])*cos(angles[0]);
-	transMatrix[1][2] = sin(angles[2])*sin(angles[1])*cos(angles[0]) - cos(angles[2])*sin(angles[0]);
-	transMatrix[2][0] = -(sin(angles[1]));
-	transMatrix[2][1] = cos(angles[1])*sin(angles[0]);
-	transMatrix[2][2] = cos(angles[1])*cos(angles[0]);
-	transMatrix[0][3] = trans[0];
-	transMatrix[1][3] = trans[1];
-	transMatrix[2][3] = trans[2];
-	transMatrix[3][0] = 0;
-	transMatrix[3][1] = 0;
-	transMatrix[3][2] = 0;
-	transMatrix[3][3] = 1;
+	//transMatrix[0][0] = cos(angles[2])*cos(angles[1]);
+	//transMatrix[0][1] = cos(angles[2])*sin(angles[1])*sin(angles[0]) - sin(angles[2])*cos(angles[0]);
+	//transMatrix[0][2] = cos(angles[2])*sin(angles[1])*cos(angles[0]) + sin(angles[2])*sin(angles[0]);
+	//transMatrix[1][0] = sin(angles[2])*cos(angles[1]);
+	//transMatrix[1][1] = sin(angles[2])*sin(angles[1])*sin(angles[0]) + cos(angles[2])*cos(angles[0]);
+	//transMatrix[1][2] = sin(angles[2])*sin(angles[1])*cos(angles[0]) - cos(angles[2])*sin(angles[0]);
+	//transMatrix[2][0] = -(sin(angles[1]));
+	//transMatrix[2][1] = cos(angles[1])*sin(angles[0]);
+	//transMatrix[2][2] = cos(angles[1])*cos(angles[0]);
+	//transMatrix[0][3] = trans[0];
+	//transMatrix[1][3] = trans[1];
+	//transMatrix[2][3] = trans[2];
+	//transMatrix[3][0] = 0;
+	//transMatrix[3][1] = 0;
+	//transMatrix[3][2] = 0;
+	//transMatrix[3][3] = 1;
+	transMatrix[0][0] << cos(angles[2])*cos(angles[1]),
+	cos(angles[2])*sin(angles[1])*sin(angles[0]) - sin(angles[2])*cos(angles[0]),
+	cos(angles[2])*sin(angles[1])*cos(angles[0]) + sin(angles[2])*sin(angles[0]),
+	sin(angles[2])*cos(angles[1]),
+	sin(angles[2])*sin(angles[1])*sin(angles[0]) + cos(angles[2])*cos(angles[0]),
+	sin(angles[2])*sin(angles[1])*cos(angles[0]) - cos(angles[2])*sin(angles[0]),
+	-(sin(angles[1])),
+	cos(angles[1])*sin(angles[0]),
+	cos(angles[1])*cos(angles[0]),
+	trans[0],
+	trans[1],
+	trans[2],
+	0,
+	0,
+	0,
+	1;
 }
 /**
 * @brief	: This function setting angles matrix with ang parameter.
 * @param	: ang is a parameter for setting angles. 
 */
-void Transform::setRotation(double ang[]) {
+void Transform::setRotation(Eigen::Vector3d ang) {
 	for (int i = 0; i < 3; i++)angles[i] = ang[i];
 	setTransMatrix();
 }
@@ -88,7 +96,7 @@ void Transform::setRotation(double ang[]) {
 * @brief	: This function setting trans matrix with tr parameter.
 * @param	: tr is a parameter for setting trans.
 */
-void Transform::setTranslation(double tr[]) {
+void Transform::setTranslation(Eigen::Vector3d tr) {
 	for (int i = 0; i < 3; i++)trans[i] = tr[i];
 	setTransMatrix();
 }
