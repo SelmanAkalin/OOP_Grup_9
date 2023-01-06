@@ -36,15 +36,17 @@ bool PointCloudRecorder::save(const PointCloud& _PC)const {
 
 	PointCloud retPC(_PC);
 
-	Point* now = retPC.getPoints();
+	list<Point> now = retPC.getPoints();
 
 	file << "//X Y Z\n" << retPC.getpointNumber() << endl;
 
 	for (int i = 0; i < _PC.getpointNumber(); i++) {
 
-		file << (*now).getX() << " " << (*now).getY() << " " << (*now).getZ() << endl;
+		Point nowP = now.back();
 
-		now++;
+		file << nowP.getX() << " " << nowP.getY() << " " << nowP.getZ() << endl;
+
+		now.pop_back();
 	}
 	
 	file.close();

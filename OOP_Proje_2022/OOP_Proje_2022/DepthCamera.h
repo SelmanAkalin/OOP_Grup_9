@@ -4,10 +4,9 @@
 * @file		: DepthCamera.h
 */
 #pragma once
-#include"PointCloud.h"
-#include<fstream>
+#include"PointCloudGenerator.h"
 //! class DepthCamera
-class DepthCamera {
+class DepthCamera :public PointCloudGenerator {
 private:
 	string fileName;
 public:
@@ -15,4 +14,5 @@ public:
 	void setfileName(string);
 	string getfileName()const;
 	PointCloud capture();
+	PointCloud captureFor();
 };
